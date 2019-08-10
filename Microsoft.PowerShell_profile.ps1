@@ -95,6 +95,7 @@ function touch {
 }
 
 # alias
+Set-Alias la Get-ChildrenItem -Force
 Set-Alias ll Get-ChildrenItem
 Set-Alias l Get-ChildrenItem
 Set-Alias jobs Get-Job
@@ -103,7 +104,6 @@ Set-Alias py python
 Remove-Item alias:curl
 Remove-Item alias:wget
 Set-Alias d docker
-Set-Alias docker-start "C:\Program Files\Docker\Docker\Docker for Windows.exe"
 
 # anaconda
 ####################
