@@ -1,7 +1,7 @@
 # alias/function
 ####################
 
-# editory
+# editor
 function xy {
     C:\Tools\xyzzy\xyzzycli.exe $args
 }
@@ -150,7 +150,7 @@ function deact {
 
 # change repository policy to enable installation from PSGallery
 # Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-# chekc repository policy
+# check repository policy
 # Get-PSRepository
 
 # PSReadLine
@@ -177,7 +177,7 @@ function prompt {
     $origLastExitCode = $LASTEXITCODE
     #set current directory on window title
     (Get-Host).UI.RawUI.WindowTitle = "Windows PowerShell " + $pwd
- 
+
     #get current directory
     $idx = $pwd.ProviderPath.LastIndexof("\") + 1
 
