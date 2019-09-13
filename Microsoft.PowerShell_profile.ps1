@@ -102,9 +102,9 @@ function touch {
 }
 
 # alias
-Set-Alias la Get-ChildrenItem -Force
-Set-Alias ll Get-ChildrenItem
-Set-Alias l Get-ChildrenItem
+Set-Alias la Get-ChildItem -Force
+Set-Alias ll Get-ChildItem
+Set-Alias l Get-ChildItem
 Set-Alias jobs Get-Job
 Set-Alias vi vim
 Set-Alias py python
