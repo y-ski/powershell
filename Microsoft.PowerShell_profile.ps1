@@ -203,5 +203,14 @@ function prompt {
 }
 
 # posh-git(git-completion)
-# Install-Module posh-git
-Import-Module posh-git
+try {
+    # Install-Module posh-git
+    Import-Module posh-git
+
+    $Global:TortoiseGitSettings.TortoiseGitCommands.add("d", "diff")
+    $Global:TortoiseGitSettings.TortoiseGitCommands.add("l", "log")
+}
+catch {
+    Write-Host "posh-git is not installed"
+    Write-Host "Install-Module posh-git"
+}
