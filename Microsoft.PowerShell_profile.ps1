@@ -111,6 +111,9 @@ Set-Alias py python
 Remove-Item alias:curl
 Remove-Item alias:wget
 Set-Alias d docker
+Set-Alias dc docker-compose
+Set-Alias g git
+Set-Alias tg tgit
 
 # anaconda
 ####################
