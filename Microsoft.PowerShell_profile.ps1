@@ -58,9 +58,16 @@ function Start-RunAs {
 Set-Alias su Start-RunAs
 
 function which {
+    Param([switch]$Alias, [switch]$Function)
     if ($args.Length -gt 0) {
-        for ($i = 0; $i -lt $args.Length; ++$i) {
-            (Get-Command $args[$i] 2>$null).source
+        $c = $args[0]
+        if ($Alias) {
+            Get-Alias $args[0] 2>$null | % { $_.Name, $_.Definition -join "`t" }
+        } elseif ($Function) {
+            (Get-ChildItem -path function: | ? { $_.Name -eq $c}).Name
+            return
+        } else {
+            (Get-Command $args[0] 2>$null).source
         }
     }
 }
