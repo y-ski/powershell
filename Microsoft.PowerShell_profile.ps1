@@ -119,15 +119,18 @@ Set-Alias tg tgit
 ####################
 
 function condapath {
+    # exec conda initialization
+    $ANACONDABASE = (ls Env:\USERPROFILE).Value + "\Anaconda3"
+    (& "${ANACONDABASE}\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
     # add path
-    $Env:Path = "C:\Tools\Anaconda3;C:\Tools\Anaconda3\Library\mingw-w64\bin;C:\Tools\Anaconda3\Library\usr\bin;C:\Tools\Anaconda3\Library\bin;C:\Tools\Anaconda3\Scripts;C:\Tools\Anaconda3\bin;C:\Tools\Anaconda3\condabin;$Env:Path"
-    # (& "C:\Tools\Anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-    $Env:CONDA_EXE = "C:\Tools\Anaconda3\Scripts\conda.exe"
-    $Env:_CE_M = ""
-    $Env:_CE_CONDA = ""
-    $Env:_CONDA_ROOT = "C:\Tools\Anaconda3"
-    $Env:_CONDA_EXE = "C:\Tools\Anaconda3\Scripts\conda.exe"
-    Import-Module "$Env:_CONDA_ROOT\shell\condabin\Conda.psm1"
+    # $ANACONDABASE = (ls Env:\USERPROFILE).Value + "\Anaconda3"
+    # $Env:Path = "${ANACONDABASE};${ANACONDABASE}\Library\mingw-w64\bin;${ANACONDABASE}\Library\usr\bin;${ANACONDABASE}\Library\bin;${ANACONDABASE}\Scripts;${ANACONDABASE}\bin;${ANACONDABASE}\condabin;$Env:Path"
+    # $Env:CONDA_EXE = "${ANACONDABASE}\Scripts\conda.exe"
+    # $Env:_CE_M = ""
+    # $Env:_CE_CONDA = ""
+    # $Env:_CONDA_ROOT = "${ANACONDABASE}"
+    # $Env:_CONDA_EXE = "${ANACONDABASE}\Scripts\conda.exe"
+    # Import-Module "$Env:_CONDA_ROOT\shell\condabin\Conda.psm1"
     # conda activate base
 }
 
