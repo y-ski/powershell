@@ -10,7 +10,8 @@ function main {
             $text + "`n" `
             | % { [Text.Encoding]::UTF8.GetBytes($_) } `
             | Add-Content -Path $textFile -Encoding Byte
-            showMessageBox -message "save text"
+            $result = showMessageBox -message ("save text`n`n" + $text)
+            Get-Content $textFile -Encoding UTF8 -tail 10
             exit
         }
 
@@ -20,7 +21,7 @@ function main {
         if ($img) {
             # save image as date formatt filename
             $img.save($imgFile)
-            showMessageBox -message "save image"
+            $result = showMessageBox -message "save image"
             exit
         }
 

@@ -1,11 +1,6 @@
 # alias/function
 ####################
 
-# editor
-function xy {
-    C:\Tools\xyzzy\xyzzycli.exe $args
-}
-
 # change cd linux like
 Remove-Item Alias:cd
 function cd {
@@ -57,6 +52,7 @@ function Start-RunAs {
 }
 Set-Alias su Start-RunAs
 
+# which
 function which {
     Param([switch]$Alias, [switch]$Function)
     if ($args.Length -gt 0) {
@@ -82,6 +78,7 @@ function clip {
     $buffer.Substring(0, $buffer.Length - 2) | clip.exe
 }
 
+# touch
 function touch {
     if ($args.Length -gt 0) {
         for ($i = 0; $i -lt $args.Length; ++$i) {
@@ -114,6 +111,43 @@ Set-Alias d docker
 Set-Alias dcm docker-compose
 Set-Alias g git
 Set-Alias tg tgit
+
+# path
+####################
+
+# editor
+function xy {
+    C:\Tools\xyzzy\xyzzycli.exe $args
+}
+
+# jq
+function jq {
+    C:\Tools\jq\jq-win64.exe
+}
+
+# clip2text
+function clip2text {
+    C:\Tools\Clip2Text\clip2text.ps1
+}
+
+function phppath {
+    [CmdletBinding()]
+    param (
+        [Parameter()]
+        [String]
+        $Version = "7.0"
+    )
+    if ($Version -eq "7.0") {
+        $Env:Path += ";C:\Tools\php\php-7.0.33-Win32-VC14-x64"
+    } else {
+        $Env:Path += ";C:\Tools\php\php-7.0.33-Win32-VC14-x64"
+    }
+}
+
+function utilpath {
+    $Env:Path += ";C:\Tools\poppler\bin"
+    $Env:Path += ";C:\Tools\ImageMagick"
+}
 
 # anaconda
 ####################
