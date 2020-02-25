@@ -97,7 +97,7 @@ function grep {
     end {
         if ($h -Or $help) {
             Write-Host "Usage:"
-            Write-Host "`tgrep `$path `$expresion [-i] [-v] [-r [-Include `$include] [-Exclude `$exclude]]"
+            Write-Host "`tgrep `$expresion `$path [-i] [-v] [-r [-Include `$include] [-Exclude `$exclude]]"
             Write-Host "`tGet-Content `$path | grep `$expresion [-i] [-v]"
             Write-Host "Options:"
             Write-Host "`t-i: case insensitive"
