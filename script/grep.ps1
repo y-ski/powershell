@@ -21,7 +21,8 @@ function grep {
         if ($h -Or $help) {
             return
         }
-        if ((-Not $file) -And (-Not $stream)) {
+        if (-Not ($path -Or $stream)) {
+            Write-Error 'Invalid Argument Error!'
             $h = $True
             return
         }
