@@ -98,6 +98,12 @@ function touch {
     }
 }
 
+# grep
+. "C:\Workspace\powershell\script\grep.ps1"
+
+# out-string in utf8
+. "C:\Workspace\powershell\script\out-utf8n.ps1"
+
 # alias
 Set-Alias la Get-ChildItem -Force
 Set-Alias ll Get-ChildItem
