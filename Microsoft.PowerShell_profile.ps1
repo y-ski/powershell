@@ -104,6 +104,10 @@ function touch {
 # out-string in utf8
 . "C:\Workspace\powershell\script\out-utf8n.ps1"
 
+# head/tial
+. "C:\Workspace\powershell\script\head.ps1"
+. "C:\Workspace\powershell\script\tail.ps1"
+
 # alias
 Set-Alias la Get-ChildItem -Force
 Set-Alias ll Get-ChildItem
