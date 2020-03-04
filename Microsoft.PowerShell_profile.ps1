@@ -101,7 +101,7 @@ function touch {
 # grep
 . "C:\Workspace\powershell\script\grep.ps1"
 
-# out-string in utf8
+# out-file in utf8
 . "C:\Workspace\powershell\script\out-utf8n.ps1"
 
 # head/tial
