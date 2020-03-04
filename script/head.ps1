@@ -3,7 +3,7 @@ function head {
         [Parameter(Mandatory=$true, Position=1)]
         [string] $path,
         [Parameter()]
-        [int] $n = 10,
+        [int] $n = 10
     )
     begin {}
     process {
