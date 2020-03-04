@@ -113,7 +113,6 @@ Set-Alias la Get-ChildItem -Force
 Set-Alias ll Get-ChildItem
 Set-Alias l Get-ChildItem
 Set-Alias jobs Get-Job
-Set-Alias vi vim
 Set-Alias py python
 Remove-Item alias:curl
 Remove-Item alias:wget
@@ -128,6 +127,16 @@ Set-Alias tg tgit
 # editor
 function xy {
     C:\Tools\xyzzy\xyzzycli.exe $args
+}
+
+function vi {
+    C:\Tools\vim\vim.exe $args
+}
+function vim {
+    C:\Tools\vim\vim.exe $args
+}
+function view {
+    C:\Tools\vim\vim.exe -R $args
 }
 
 # jq
