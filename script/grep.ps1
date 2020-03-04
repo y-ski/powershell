@@ -1,7 +1,5 @@
 function grep {
     param (
-        [Parameter(ValueFromPipeline=$True)]
-        [string[]] $stream,
         [Parameter(Position=1)]
         [string] $expresion,
         [Parameter(Position=2)]
@@ -21,7 +19,7 @@ function grep {
         if ($h -Or $help) {
             return
         }
-        if (-Not ($path -Or $stream)) {
+        if (-Not ($path -Or $input)) {
             Write-Error 'Invalid Argument Error!'
             $h = $True
             return
@@ -39,9 +37,9 @@ function grep {
                         # # case insensitive, not match, file
                         Select-String $path -Pattern $expresion -NotMatch
                     }
-                } elseif ($stream) {
-                    # case insensitive, not match, stream(pipe)
-                    Write-Output $stream | Select-String -Pattern $expresion -NotMatch
+                } elseif ($input) {
+                    # case insensitive, not match, input stream(pipeline)
+                    $input | Out-String -Stream | Select-String -Pattern $expresion -NotMatch
                 }
             } else {
                 # case insensitive, match
@@ -54,9 +52,10 @@ function grep {
                         # case insensitive, match, file
                         Select-String $path -Pattern $expresion
                     }
-                } elseif ($stream) {
-                    # case insensitive, match, stream(pipe)
-                    Write-Output $stream | Select-String -Pattern $expresion
+                } elseif ($input) {
+                    Write-Host input
+                    # case insensitive, match, input stream(pipeline)
+                    $input | Out-String -Stream | Select-String -Pattern $expresion
                 }
             }
         } else {
@@ -72,9 +71,9 @@ function grep {
                         # case sensitive, not match, file
                         Select-String $path -Pattern $expresion -CaseSensitive -NotMatch
                     }
-                } elseif ($stream) {
-                    # # case sensitive, not match, stream(pipe)
-                    Write-Output $stream | Select-String -Pattern $expresion -CaseSensitive -NotMatch
+                } elseif ($input) {
+                    # # case sensitive, not match, input stream(pipeline)
+                    $input | Out-String -Stream | Select-String -Pattern $expresion -CaseSensitive -NotMatch
                 }
             } else {
                 # case sensitive, match
@@ -87,9 +86,9 @@ function grep {
                         # case sensitive, match, file
                         Select-String $path -Pattern $expresion -CaseSensitive
                     }
-                } elseif ($stream) {
-                    # case sensitive, match, stream(pipe)
-                    Write-Output $stream | Select-String -Pattern $expresion -CaseSensitive
+                } elseif ($input) {
+                    # case sensitive, match, input stream(pipeline)
+                    $input | Out-String -Stream | Select-String -Pattern $expresion -CaseSensitive
                 }
             }
         }
