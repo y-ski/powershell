@@ -1,8 +1,8 @@
 function grep {
     param (
-        [Parameter(Position=1)]
+        [Parameter(Position = 1)]
         [string] $expresion,
-        [Parameter(Position=2)]
+        [Parameter(Position = 2)]
         [string] $path,
         [Parameter()]
         [string] $include = "",

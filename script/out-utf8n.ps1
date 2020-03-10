@@ -1,8 +1,8 @@
 function Out-UTF8 {
     param (
-        [Parameter(Mandatory=$True, ValueFromPipeline=$True)]
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [Array] $line,
-        [Parameter(Mandatory=$True)]
+        [Parameter(Mandatory = $True)]
         [String] $File,
         [Switch] $CrLf,
         [Switch] $BOM

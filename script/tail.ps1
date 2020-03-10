@@ -1,12 +1,12 @@
 function tail {
     param (
-        [Parameter(Mandatory=$true, Position=1)]
+        [Parameter(Mandatory = $true, Position = 1)]
         [string] $path,
         [Parameter()]
         [int] $n = 10,
         [switch] $f
     )
-    begin {}
+    begin { }
     process {
         if (Test-Path $path) {
             if ($f) {
@@ -18,5 +18,5 @@ function tail {
             Write-Host "not found: $path"
         }
     }
-    end {}
+    end { }
 }

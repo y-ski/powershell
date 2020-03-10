@@ -1,11 +1,11 @@
 function head {
     param (
-        [Parameter(Mandatory=$true, Position=1)]
+        [Parameter(Mandatory = $true, Position = 1)]
         [string] $path,
         [Parameter()]
         [int] $n = 10
     )
-    begin {}
+    begin { }
     process {
         if (Test-Path $path) {
             Get-Content $path -Head $n
@@ -13,5 +13,5 @@ function head {
             Write-Host "not found: $path"
         }
     }
-    end {}
+    end { }
 }
