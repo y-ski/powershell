@@ -1,19 +1,21 @@
 function less {
-    param(
-        [Parameter()]
-        [string[]] $paths
-    )
+    param()
 
-    begin { }
+    begin {
+        # with BOM when use `[System.Text.Encoding]::GetEncoding('utf-8')`
+        $OutputEncoding = [System.Text.UTF8Encoding]::new()
+    }
     process {
-        $OutputEncoding = [System.Text.Encoding]::GetEncoding('utf-8')
-        if ($paths) {
-            foreach ($file in $paths) {
-                Get-Content $file | & wsl less
+        if ($args) {
+            # from parameters
+            foreach ($path in $args) {
+                Get-Content $path | & wsl less
             }
-        } else {
+        } elseif ($input) {
+            # from input stream(pipeline)
             $input | & wsl less
         }
     }
-    end { }
+    end {
+    }
 }
