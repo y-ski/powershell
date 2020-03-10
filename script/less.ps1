@@ -14,6 +14,9 @@ function less {
         } elseif ($input) {
             # from input stream(pipeline)
             $input | & wsl less
+            # $input is `ArrayList+ArrayListEnumeratorSimple` which is like Iterator.
+            # once iterate $input, $input cannot be reuse.
+            # so above code is called only once.
         }
     }
     end {
