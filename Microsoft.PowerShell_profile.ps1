@@ -6,17 +6,13 @@ Remove-Item Alias:cd
 function cd {
     if ($args.Length -gt 0) {
         Set-Location $args[0]
-    }
-    elseif ($Env:HOME) {
+    } elseif ($Env:HOME) {
         Set-Location $Env:HOME
-    }
-    elseif ($HOME) {
+    } elseif ($HOME) {
         Set-Location $HOME
-    }
-    elseif ($Env:HOMEPATH -And $Env:HOMEDRIVE) {
+    } elseif ($Env:HOMEPATH -And $Env:HOMEDRIVE) {
         Set-Location $Env:HOMEDRIVE$Env:HOMEPATH
-    }
-    else {
+    } else {
         Write-Output "no home directory"
     }
 }
@@ -60,7 +56,7 @@ function which {
         if ($Alias) {
             Get-Alias $args[0] 2>$null | % { $_.Name, $_.Definition -join "`t" }
         } elseif ($Function) {
-            (Get-ChildItem -path function: | ? { $_.Name -eq $c}).Name
+            (Get-ChildItem -path function: | ? { $_.Name -eq $c }).Name
             return
         } else {
             (Get-Command $args[0] 2>$null).source
@@ -89,8 +85,7 @@ function touch {
                     # update timestamp
                     (Get-Item $args[$i]).LastWriteTime = (Get-Date)
                 }
-            }
-            else {
+            } else {
                 # create new empty file
                 New-Item -ItemType file $args[$i]
             }
@@ -194,8 +189,7 @@ function act {
     Get-Command conda > $null
     if ($?) {
         conda activate $args[0]
-    }
-    else {
+    } else {
         Write-Host "conda command not found."
     }
 }
@@ -205,8 +199,7 @@ function deact {
     if ($?) {
         conda deactivate
         condapath
-    }
-    else {
+    } else {
         Write-Host "conda command not found."
     }
 }
@@ -233,12 +226,12 @@ $PSReadlineOption = @{
     #        "Parameter" = "#FFFFFF"
     #    }
 }
-Set-PSReadlineOption @PSReadlineOption
+Set-PSReadLineOption @PSReadlineOption
 # keybinding
-Set-PSReadlineKeyHandler -Key Ctrl+v -Function Paste
-Set-PSReadlineKeyHandler -Key Shift+Insert -Function Paste
-Set-PSReadlineKeyHandler -Key Ctrl+h -Function BackwardDeleteChar
-Set-PSReadlineKeyHandler -Key Ctrl+l -Function ClearScreen
+Set-PSReadLineKeyHandler -Key Ctrl+v -Function Paste
+Set-PSReadLineKeyHandler -Key Shift+Insert -Function Paste
+Set-PSReadLineKeyHandler -Key Ctrl+h -Function BackwardDeleteChar
+Set-PSReadLineKeyHandler -Key Ctrl+l -Function ClearScreen
 
 # change prompt for posh-git
 function prompt {
@@ -268,8 +261,7 @@ try {
 
     $Global:TortoiseGitSettings.TortoiseGitCommands.add("d", "diff")
     $Global:TortoiseGitSettings.TortoiseGitCommands.add("l", "log")
-}
-catch {
+} catch {
     Write-Host "posh-git is not installed"
     Write-Host "Install-Module posh-git"
 }
