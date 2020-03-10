@@ -108,6 +108,9 @@ function touch {
 . "C:\Workspace\powershell\script\head.ps1"
 . "C:\Workspace\powershell\script\tail.ps1"
 
+# less
+. "C:\Workspace\powershell\script\less.ps1"
+
 # alias
 Set-Alias la Get-ChildItem -Force
 Set-Alias ll Get-ChildItem
